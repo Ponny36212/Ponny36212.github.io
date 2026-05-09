@@ -20,15 +20,15 @@
 
 <script class="next-config" data-name="main" type="application/json">{"hostname":"ponny36212.github.io","root":"/","images":"/images","scheme":"Gemini","darkmode":true,"version":"8.27.0","exturl":false,"sidebar":{"position":"left","width_expanded":320,"width_dual_column":240,"display":"post","padding":18,"offset":12},"hljswrap":true,"codeblock":{"theme":{"light":"default","dark":"stackoverflow-dark"},"prism":{"light":"prism","dark":"prism-dark"},"copy_button":{"enable":false,"style":null},"fold":{"enable":false,"height":500},"language":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"duration":200,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"}}</script><script src="/js/config.js" defer></script>
 
-    <meta name="description" content="📄 正在加载 PDF...     ◀ 上一页      下一页 ▶   缩放:   −   100%   +          pdfjsLib.GlobalWorkerOptions.workerSrc &#x3D; &#39;https:&#x2F;&#x2F;cdnjs.cloudflare.com&#x2F;ajax&#x2F;libs&#x2F;pdf.js&#x2F;3.11.174&#x2F;pdf.worker.min.js&#39;;  let pdfDoc &#x3D; nul">
+    <meta name="description" content="📑 目录                        ☰ 目录       ◀       -       ▶       |       −       150%       +       |       适应宽度                            📄 正在加载 PDF...     pdfjsLib.GlobalWorkerOptions.work">
 <meta property="og:type" content="website">
 <meta property="og:title" content="PDF 预览">
 <meta property="og:url" content="https://ponny36212.github.io/pdf-viewer/index.html">
 <meta property="og:site_name" content="Ponny&#39;s Blog">
-<meta property="og:description" content="📄 正在加载 PDF...     ◀ 上一页      下一页 ▶   缩放:   −   100%   +          pdfjsLib.GlobalWorkerOptions.workerSrc &#x3D; &#39;https:&#x2F;&#x2F;cdnjs.cloudflare.com&#x2F;ajax&#x2F;libs&#x2F;pdf.js&#x2F;3.11.174&#x2F;pdf.worker.min.js&#39;;  let pdfDoc &#x3D; nul">
+<meta property="og:description" content="📑 目录                        ☰ 目录       ◀       -       ▶       |       −       150%       +       |       适应宽度                            📄 正在加载 PDF...     pdfjsLib.GlobalWorkerOptions.work">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2026-05-09T04:00:00.000Z">
-<meta property="article:modified_time" content="2026-05-09T10:45:09.995Z">
+<meta property="article:modified_time" content="2026-05-09T10:54:55.005Z">
 <meta property="article:author" content="Ponny36212">
 <meta property="article:tag" content="技术博客">
 <meta property="article:tag" content="笔记">
@@ -187,88 +187,140 @@
       
       
       <div class="post-body">
-          <div id="pdf-loading" style="text-align:center;padding:60px;color:#888;">📄 正在加载 PDF...</div>
-<div id="pdf-error" style="display:none;text-align:center;padding:60px;color:#c33;"></div>
-<div id="pdf-toolbar" style="display:none;text-align:center;margin:10px 0;">
-  <button onclick="prevPage()" style="padding:6px 16px;margin:0 4px;cursor:pointer;">◀ 上一页</button>
-  <span id="page-info" style="margin:0 12px;"></span>
-  <button onclick="nextPage()" style="padding:6px 16px;margin:0 4px;cursor:pointer;">下一页 ▶</button>
-  <span style="margin-left:16px;">缩放:</span>
-  <button onclick="zoomOut()" style="padding:4px 10px;cursor:pointer;">−</button>
-  <span id="zoom-level" style="margin:0 8px;">100%</span>
-  <button onclick="zoomIn()" style="padding:4px 10px;cursor:pointer;">+</button>
+          <div id="pdf-app" style="display:flex;height:calc(100vh - 120px);min-height:600px;border:1px solid #ddd;border-radius:6px;overflow:hidden;">
+
+  <div id="sidebar" style="width:260px;min-width:200px;border-right:1px solid #ddd;overflow-y:auto;background:#fafafa;display:none;flex-direction:column;">
+    <div style="padding:10px 14px;font-weight:600;border-bottom:1px solid #ddd;background:#f0f0f0;">📑 目录</div>
+    <div id="outline-container" style="flex:1;overflow-y:auto;padding:6px 0;"></div>
+  </div>
+
+  <div style="flex:1;display:flex;flex-direction:column;min-width:0;">
+    <div style="display:flex;align-items:center;justify-content:center;gap:6px;padding:8px 12px;background:#f5f5f5;border-bottom:1px solid #ddd;flex-wrap:wrap;">
+      <button onclick="toggleSidebar()" id="btn-sidebar" style="padding:5px 10px;cursor:pointer;border:1px solid #ccc;border-radius:4px;background:#fff;">☰ 目录</button>
+      <button onclick="prevPage()" style="padding:5px 12px;cursor:pointer;border:1px solid #ccc;border-radius:4px;background:#fff;">◀</button>
+      <span id="page-display" style="min-width:100px;text-align:center;font-size:14px;">-</span>
+      <button onclick="nextPage()" style="padding:5px 12px;cursor:pointer;border:1px solid #ccc;border-radius:4px;background:#fff;">▶</button>
+      <span style="color:#ccc;">|</span>
+      <button onclick="zoomOut()" style="padding:5px 10px;cursor:pointer;border:1px solid #ccc;border-radius:4px;background:#fff;">−</button>
+      <span id="zoom-label" style="font-size:13px;min-width:42px;text-align:center;">150%</span>
+      <button onclick="zoomIn()" style="padding:5px 10px;cursor:pointer;border:1px solid #ccc;border-radius:4px;background:#fff;">+</button>
+      <span style="color:#ccc;">|</span>
+      <button onclick="zoomFit()" style="padding:5px 10px;cursor:pointer;border:1px solid #ccc;border-radius:4px;background:#fff;">适应宽度</button>
+    </div>
+    <div id="viewer" style="flex:1;overflow:auto;background:#525659;text-align:center;padding:10px;">
+      <canvas id="pdf-canvas" style="box-shadow:0 2px 12px rgba(0,0,0,0.3);"></canvas>
+    </div>
+  </div>
 </div>
-<div id="pdf-container" style="text-align:center;overflow:auto;max-height:80vh;">
-  <canvas id="pdf-canvas"></canvas>
-</div>
+
+<div id="pdf-loading" style="text-align:center;padding:80px;color:#888;font-size:16px;">📄 正在加载 PDF...</div>
+<div id="pdf-error" style="display:none;text-align:center;padding:80px;color:#c33;"></div>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.min.js"></script>
 <script>
 pdfjsLib.GlobalWorkerOptions.workerSrc = 'https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.worker.min.js';
 
-let pdfDoc = null;
-let pageNum = 1;
-let pageRendering = false;
-let pageNumPending = null;
-let scale = 1.2;
-let canvas = document.getElementById('pdf-canvas');
-let ctx = canvas.getContext('2d');
+let pdfDoc = null, pageNum = 1, scale = 1.5, outline = [];
+const canvas = document.getElementById('pdf-canvas'), ctx = canvas.getContext('2d');
+const dpr = window.devicePixelRatio || 1;
 
-// 从 URL hash 获取 PDF 地址: #encoded-url
 const encodedUrl = window.location.hash.substring(1);
-if (!encodedUrl) {
-  document.getElementById('pdf-loading').innerHTML = '❌ 缺少 PDF 地址';
-} else {
-  const pdfUrl = decodeURIComponent(encodedUrl);
-  loadPDF(pdfUrl);
+if (!encodedUrl) { showError('缺少 PDF 地址'); }
+else { loadPDF(decodeURIComponent(encodedUrl)); }
+
+function showError(msg) {
+  document.getElementById('pdf-loading').style.display='none';
+  document.getElementById('pdf-error').style.display='block';
+  document.getElementById('pdf-error').textContent='❌ '+msg;
 }
 
 function loadPDF(url) {
-  pdfjsLib.getDocument(url).promise.then(function(pdf) {
-    pdfDoc = pdf;
-    document.getElementById('pdf-loading').style.display = 'none';
-    document.getElementById('pdf-toolbar').style.display = 'block';
-    document.getElementById('page-info').textContent = '第 1 页 / 共 ' + pdf.numPages + ' 页';
-    renderPage(pageNum);
-  }).catch(function(err) {
-    document.getElementById('pdf-loading').style.display = 'none';
-    document.getElementById('pdf-error').style.display = 'block';
-    document.getElementById('pdf-error').textContent = '❌ 加载失败: ' + err.message;
-  });
+  pdfjsLib.getDocument(url).promise.then(pdf => {
+    pdfDoc=pdf;
+    document.getElementById('pdf-loading').style.display='none';
+    document.getElementById('pdf-app').style.display='flex';
+    updateDisplay(); renderPage(pageNum); loadOutline(pdf);
+  }).catch(err => showError('加载失败: '+err.message));
 }
 
 function renderPage(num) {
-  pageRendering = true;
-  pdfDoc.getPage(num).then(function(page) {
-    var viewport = page.getViewport({scale: scale});
-    canvas.height = viewport.height;
-    canvas.width = viewport.width;
-    var renderContext = { canvasContext: ctx, viewport: viewport };
-    var renderTask = page.render(renderContext);
-    renderTask.promise.then(function() {
-      pageRendering = false;
-      document.getElementById('page-info').textContent = '第 ' + num + ' 页 / 共 ' + pdfDoc.numPages + ' 页';
-      if (pageNumPending !== null) {
-        renderPage(pageNumPending);
-        pageNumPending = null;
-      }
-    });
+  pdfDoc.getPage(num).then(page => {
+    const vp = page.getViewport({scale});
+    canvas.height=Math.floor(vp.height*dpr);
+    canvas.width=Math.floor(vp.width*dpr);
+    canvas.style.height=vp.height+'px';
+    canvas.style.width=vp.width+'px';
+    ctx.setTransform(dpr,0,0,dpr,0,0);
+    page.render({canvasContext:ctx,viewport:vp}).promise.then(()=>{updateDisplay();highlightOutline(num);});
   });
 }
 
-function queueRenderPage(num) {
-  if (pageRendering) {
-    pageNumPending = num;
-  } else {
-    renderPage(num);
-  }
+function updateDisplay() {
+  document.getElementById('page-display').textContent=pageNum+' / '+pdfDoc.numPages;
 }
 
-function prevPage() { if (pageNum <= 1) return; pageNum--; queueRenderPage(pageNum); }
-function nextPage() { if (pageNum >= pdfDoc.numPages) return; pageNum++; queueRenderPage(pageNum); }
-function zoomIn()  { scale += 0.2; document.getElementById('zoom-level').textContent = Math.round(scale*100)+'%'; renderPage(pageNum); }
-function zoomOut() { if (scale <= 0.6) return; scale -= 0.2; document.getElementById('zoom-level').textContent = Math.round(scale*100)+'%'; renderPage(pageNum); }
+function prevPage(){if(pageNum>1){pageNum--;renderPage(pageNum);}}
+function nextPage(){if(pageNum<pdfDoc.numPages){pageNum++;renderPage(pageNum);}}
+function zoomIn(){scale=Math.min(3,scale+0.25);document.getElementById('zoom-label').textContent=Math.round(scale*100)+'%';renderPage(pageNum);}
+function zoomOut(){scale=Math.max(0.5,scale-0.25);document.getElementById('zoom-label').textContent=Math.round(scale*100)+'%';renderPage(pageNum);}
+function zoomFit(){
+  const vw=document.getElementById('viewer').clientWidth-20;
+  pdfDoc.getPage(pageNum).then(p=>{scale=vw/p.getViewport({scale:1}).width;document.getElementById('zoom-label').textContent=Math.round(scale*100)+'%';renderPage(pageNum);});
+}
+
+function loadOutline(pdf) {
+  pdf.getOutline().then(async items => {
+    if(!items||items.length===0){document.getElementById('btn-sidebar').style.display='none';return;}
+    outline = await flattenWithPages(items, pdf);
+    const c=document.getElementById('outline-container');c.innerHTML='';
+    outline.forEach((item,idx) => {
+      const d=document.createElement('div');
+      d.className='oi';d.setAttribute('data-idx',idx);
+      d.style.cssText='padding:4px 14px 4px '+(14+item.level*16)+'px;cursor:pointer;font-size:13px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;border-left:2px solid transparent;';
+      d.textContent=item.title;
+      d.onclick=()=>gotoOutline(idx);
+      c.appendChild(d);
+    });
+  }).catch(()=>{document.getElementById('btn-sidebar').style.display='none';});
+}
+
+async function flattenWithPages(items, pdf, level=0){
+  let r=[];
+  for(const i of items){
+    let page=0;
+    if(i.dest){try{page=await pdf.getPageIndex(i.dest[0])+1;}catch(e){}}
+    r.push({title:i.title,dest:i.dest,level,page});
+    if(i.items)r=r.concat(await flattenWithPages(i.items,pdf,level+1));
+  }
+  return r;
+}
+
+function highlightOutline(page) {
+  document.querySelectorAll('.oi').forEach(el=>el.style.borderLeftColor='transparent');
+  let idx=-1;
+  for(let i=outline.length-1;i>=0;i--){if(outline[i].page<=page){idx=i;break;}}
+  if(idx>=0){const el=document.querySelector('.oi[data-idx="'+idx+'"]');if(el){el.style.borderLeftColor='#2196F3';el.style.fontWeight='600';el.scrollIntoView({block:'nearest'});}}
+}
+
+async function gotoOutline(idx){
+  const item=outline[idx];
+  if(item.dest){try{const pi=await pdfDoc.getPageIndex(item.dest[0]);pageNum=pi+1;renderPage(pageNum);}catch(e){}}
+}
+
+function toggleSidebar(){
+  const sb=document.getElementById('sidebar');
+  sb.style.display=sb.style.display==='flex'?'none':'flex';
+}
 </script>
+<style>
+.oi:hover{background:#e8e8e8;}
+@media(prefers-color-scheme:dark){
+  #sidebar{background:#1e1e1e;border-color:#333;}
+  #sidebar>div:first-child{background:#2a2a2a;border-color:#333;color:#ddd;}
+  .oi{color:#ccc;}.oi:hover{background:#333!important;}
+  #pdf-app{border-color:#333;}
+}
+</style>
 
       </div>
       
