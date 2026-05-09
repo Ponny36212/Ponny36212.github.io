@@ -20,29 +20,27 @@
 
 <script class="next-config" data-name="main" type="application/json">{"hostname":"ponny36212.github.io","root":"/","images":"/images","scheme":"Gemini","darkmode":true,"version":"8.27.0","exturl":false,"sidebar":{"position":"left","width_expanded":320,"width_dual_column":240,"display":"post","padding":18,"offset":12},"hljswrap":true,"codeblock":{"theme":{"light":"default","dark":"stackoverflow-dark"},"prism":{"light":"prism","dark":"prism-dark"},"copy_button":{"enable":false,"style":null},"fold":{"enable":false,"height":500},"language":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"duration":200,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"}}</script><script src="/js/config.js" defer></script>
 
-    <meta name="description" content="← 返回 Java基础 📄 [Java 反射](&#x2F;notes&#x2F;Java&#x2F;Java基础&#x2F;Java 反射.html) 📄 [Java 序列化和反序列化](&#x2F;notes&#x2F;Java&#x2F;Java基础&#x2F;Java 序列化和反序列化.html) 📄 [Java 集合](&#x2F;notes&#x2F;Java&#x2F;Java">
+    <meta name="description" content="Java 序列化和反序列化序列化和反序列化的概念Java序列化是指把Java对象转换为字节序列的过程；而Java反序列化是指把字节序列恢复为Java对象的过程。  序列化是这个过程的第一部分，将数据分解成字节流，以便存储在文件中或在网络上传输。反序列化就是打开字节流并重构对象。对象序列化不仅要将基本数据类型转换成字节表示，有时还要恢复数据，恢复数据要求有恢复数据的对象实例。  整体总结：  序列化">
 <meta property="og:type" content="website">
-<meta property="og:title" content="Java基础">
-<meta property="og:url" content="https://ponny36212.github.io/notes/Java/Java%E5%9F%BA%E7%A1%80/index.html">
+<meta property="og:title" content="Java 序列化和反序列化">
+<meta property="og:url" content="https://ponny36212.github.io/notes/Java/Java%E5%9F%BA%E7%A1%80/Java%20%E5%BA%8F%E5%88%97%E5%8C%96%E5%92%8C%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96.html">
 <meta property="og:site_name" content="Ponny&#39;s Blog">
-<meta property="og:description" content="← 返回 Java基础 📄 [Java 反射](&#x2F;notes&#x2F;Java&#x2F;Java基础&#x2F;Java 反射.html) 📄 [Java 序列化和反序列化](&#x2F;notes&#x2F;Java&#x2F;Java基础&#x2F;Java 序列化和反序列化.html) 📄 [Java 集合](&#x2F;notes&#x2F;Java&#x2F;Java">
+<meta property="og:description" content="Java 序列化和反序列化序列化和反序列化的概念Java序列化是指把Java对象转换为字节序列的过程；而Java反序列化是指把字节序列恢复为Java对象的过程。  序列化是这个过程的第一部分，将数据分解成字节流，以便存储在文件中或在网络上传输。反序列化就是打开字节流并重构对象。对象序列化不仅要将基本数据类型转换成字节表示，有时还要恢复数据，恢复数据要求有恢复数据的对象实例。  整体总结：  序列化">
 <meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2026-05-09T01:58:09.000Z">
-<meta property="article:modified_time" content="2026-05-09T09:58:09.911Z">
+<meta property="article:published_time" content="2026-05-09T01:57:42.000Z">
+<meta property="article:modified_time" content="2026-05-09T09:57:42.198Z">
 <meta property="article:author" content="Ponny36212">
-<meta property="article:tag" content="技术博客">
-<meta property="article:tag" content="笔记">
-<meta property="article:tag" content="GitHub Pages">
+<meta property="article:tag" content="java">
 <meta name="twitter:card" content="summary">
 
 
-<link rel="canonical" href="https://ponny36212.github.io/notes/Java/Java%E5%9F%BA%E7%A1%80/">
+<link rel="canonical" href="https://ponny36212.github.io/notes/Java/Java%E5%9F%BA%E7%A1%80/Java%20%E5%BA%8F%E5%88%97%E5%8C%96%E5%92%8C%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96">
 
 
-<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":false,"lang":"zh-CN","comments":true,"permalink":"https://ponny36212.github.io/notes/Java/Java%E5%9F%BA%E7%A1%80/index.html","path":"notes/Java/Java基础/index.html","title":"Java基础"}</script>
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":false,"lang":"zh-CN","comments":true,"permalink":"https://ponny36212.github.io/notes/Java/Java%E5%9F%BA%E7%A1%80/Java%20%E5%BA%8F%E5%88%97%E5%8C%96%E5%92%8C%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96.html","path":"notes/Java/Java基础/Java 序列化和反序列化.html","title":"Java 序列化和反序列化"}</script>
 
 <script class="next-config" data-name="calendar" type="application/json">""</script>
-<title>Java基础 | Ponny's Blog
+<title>Java 序列化和反序列化 | Ponny's Blog
 </title>
   
 
@@ -133,7 +131,7 @@
       <div class="sidebar-panel-container">
         <!--noindex-->
         <div class="post-toc-wrap sidebar-panel">
-            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Java%E5%9F%BA%E7%A1%80"><span class="nav-text">Java基础</span></a></li></ol></div>
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Java-%E5%BA%8F%E5%88%97%E5%8C%96%E5%92%8C%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96"><span class="nav-text">Java 序列化和反序列化</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%BA%8F%E5%88%97%E5%8C%96%E5%92%8C%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96%E7%9A%84%E6%A6%82%E5%BF%B5"><span class="nav-text">序列化和反序列化的概念</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%BA%E4%BB%80%E4%B9%88%E9%9C%80%E8%A6%81%E5%BA%8F%E5%88%97%E5%8C%96%E4%B8%8E%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96"><span class="nav-text">为什么需要序列化与反序列化</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%BA%8F%E5%88%97%E5%8C%96%E5%92%8C%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96%E6%B3%A8%E6%84%8F%E4%BA%8B%E9%A1%B9"><span class="nav-text">序列化和反序列化注意事项</span></a></li></ol></li></ol></div>
         </div>
         <!--/noindex-->
 
@@ -176,14 +174,15 @@
     
     <div class="post-block" lang="zh-CN"><header class="post-header">
 
-<h1 class="post-title" itemprop="name headline">Java基础
+<h1 class="post-title" itemprop="name headline">Java 序列化和反序列化
 </h1>
 
 <div class="post-meta-container">
   <ul class="breadcrumb">
             <li><a href="/notes/">笔记</a></li>
             <li><a href="/notes/Java/">JAVA</a></li>
-          <li>JAVA基础</li>
+            <li><a href="/notes/Java/Java%E5%9F%BA%E7%A1%80/">JAVA基础</a></li>
+            <li>JAVA 序列化和反序列化</li>
   </ul>
 </div>
 
@@ -193,12 +192,50 @@
       
       
       <div class="post-body">
-          <p><a href="/notes/Java">← 返回</a></p>
-<h2 id="Java基础"><a href="#Java基础" class="headerlink" title="Java基础"></a>Java基础</h2><ul>
-<li>📄 [Java 反射](&#x2F;notes&#x2F;Java&#x2F;Java基础&#x2F;Java 反射.html)</li>
-<li>📄 [Java 序列化和反序列化](&#x2F;notes&#x2F;Java&#x2F;Java基础&#x2F;Java 序列化和反序列化.html)</li>
-<li>📄 [Java 集合](&#x2F;notes&#x2F;Java&#x2F;Java基础&#x2F;Java 集合.html)</li>
+          <h1 id="Java-序列化和反序列化"><a href="#Java-序列化和反序列化" class="headerlink" title="Java 序列化和反序列化"></a>Java 序列化和反序列化</h1><h2 id="序列化和反序列化的概念"><a href="#序列化和反序列化的概念" class="headerlink" title="序列化和反序列化的概念"></a>序列化和反序列化的概念</h2><p><strong>Java序列化</strong>是指把Java对象转换为字节序列的过程；而<strong>Java反序列化</strong>是指把字节序列恢复为Java对象的过程。</p>
+<blockquote>
+<p>序列化是这个过程的第一部分，<strong>将数据分解成字节流</strong>，以便存储在文件中或在网络上传输。反序列化就是打开字节流并重构对象。对象序列化<strong>不仅要将基本数据类型转换成字节表示</strong>，有时还要<strong>恢复数据</strong>，恢复数据要求有恢复数据的对象实例。</p>
+</blockquote>
+<p><strong>整体总结：</strong></p>
+<ol>
+<li><p>序列化就是在保存数据时，保存数据的值和数据类型</p>
+</li>
+<li><p>反序列化就是在恢复数据时，恢复数据的值和数据类型</p>
+</li>
+<li><p>需要让某个对象支持序列化机制，则必须让其类是可序列化的，为了让某个类是可序列化的，该类必须实现如下两个接口之一:</p>
+<ul>
+<li><p>Serializable	&#x2F;&#x2F;这是一个标记接口没有方法</p>
+</li>
+<li><p>Externalizable   &#x2F;&#x2F;该接口有方法需要实现</p>
+</li>
 </ul>
+</li>
+</ol>
+<h2 id="为什么需要序列化与反序列化"><a href="#为什么需要序列化与反序列化" class="headerlink" title="为什么需要序列化与反序列化"></a>为什么需要序列化与反序列化</h2><p>那么当<strong>两个Java进程进行通信</strong>时，能否实现进程间的<strong>对象传送</strong>呢？答案是可以的。如何做到呢？这就需要Java序列化与反序列化了。换句话说，一方面，发送方需要把这个Java对象转换为字节序列，然后在网络上传送；另一方面，接收方需要从字节序列中恢复出Java对象。</p>
+<p><strong>Java序列化的好处：</strong></p>
+<ol>
+<li>实现了数据的持久化，通过序列化可以把数据永久地保存到硬盘上（通常存放在文件里）</li>
+<li>利用序列化实现远程通信，即在网络上传送对象的字节序列。</li>
+</ol>
+<h2 id="序列化和反序列化注意事项"><a href="#序列化和反序列化注意事项" class="headerlink" title="序列化和反序列化注意事项"></a>序列化和反序列化注意事项</h2><ol>
+<li><p>读写<font color='red'><strong>顺序要一致</strong></font></p>
+</li>
+<li><p>要求序列化或反序列化对象，需要<font color='red'><strong>实现 Serializable</strong></font></p>
+</li>
+<li><p>序列化的类中建议添加SerialVersionUID，为了提高版本的兼容性</p>
+</li>
+</ol>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> <span class="type">long</span> <span class="variable">serialVersionUID</span> <span class="operator">=</span> <span class="number">1L</span>;</span><br></pre></td></tr></table></figure>
+
+<p>Java的序列化机制是通过判断运行时类的<strong>serialVersionUID来验证版本一致性</strong>的，在进行反序列化时，JVM会把传进来的字节流中的serialVersionUID与本地实体类中的serialVersionUID进行比较，如果相同则认为是一致的，便可以进行反序列化，否则就会报序列化版本不一致的异常。即序列化ID是为了保证成功进行反序列化</p>
+<ol start="4">
+<li><p>序列化对象时，默认将里面所有属性都进行序列化，但<font color='red'><strong>除了static或transient修饰的成员</strong></font></p>
+</li>
+<li><p>序列化对象时，要求里面<font color='red'><strong>属性的类型也需要实现序列化接口</strong></font></p>
+</li>
+<li><p><strong>序列化具备可继承性</strong>，也就是如果某类已经实现了序列化，则它的所有子类也已经默认实现了序列化。</p>
+</li>
+</ol>
 
       </div>
       
@@ -208,7 +245,8 @@
   <ul class="breadcrumb">
             <li><a href="/notes/">笔记</a></li>
             <li><a href="/notes/Java/">JAVA</a></li>
-          <li>JAVA基础</li>
+            <li><a href="/notes/Java/Java%E5%9F%BA%E7%A1%80/">JAVA基础</a></li>
+            <li>JAVA 序列化和反序列化</li>
   </ul>
 
     
