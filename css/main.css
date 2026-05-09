@@ -1385,7 +1385,7 @@ pre code {
     vertical-align: middle;
   }
   .links-of-author a::before {
-    background: #a320ff;
+    background: #ffa1af;
     display: inline-block;
     margin-right: 3px;
     transform: translateY(-2px);
@@ -2911,5 +2911,70 @@ header.header {
   }
   .comments {
     padding: 10px 12px;
+  }
+}
+/* 笔记树形目录样式 */
+.note-tree {
+  list-style: none;
+  padding-left: 0;
+  margin: 0.5em 0;
+}
+.note-tree ul {
+  list-style: none;
+  padding-left: 1.5em;
+  margin: 0.2em 0;
+  border-left: 2px solid var(--border-color, #e0e0e0);
+}
+.note-tree li {
+  margin: 0.15em 0;
+  line-height: 1.8;
+}
+.note-tree details {
+  margin: 0.2em 0;
+}
+.note-tree summary {
+  cursor: pointer;
+  padding: 2px 6px;
+  border-radius: 4px;
+  transition: background 0.2s;
+  list-style: none; /* 隐藏默认三角 */
+}
+.note-tree summary::-webkit-details-marker {
+  display: none;
+}
+.note-tree summary::before {
+  content: '▸ ';
+  font-size: 0.8em;
+  margin-right: 2px;
+  transition: transform 0.2s;
+  display: inline-block;
+}
+.note-tree details[open] > summary::before {
+  content: '▾ ';
+}
+.note-tree summary:hover {
+  background: var(--item-hover-bg, rgba(128,128,128,0.08));
+}
+.tree-icon {
+  margin-right: 4px;
+}
+.tree-count {
+  font-size: 0.85em;
+  color: var(--text-muted, #999);
+  margin-left: 4px;
+}
+.tree-note {
+  padding-left: 1.5em;
+}
+/* 暗色模式适配 */
+@media (prefers-color-scheme: dark) {
+  .note-tree ul {
+    border-left-color: rgba(255,255,255,0.15);
+  }
+  .note-tree summary:hover {
+    background: rgba(255,255,255,0.06);
+  }
+  .tree-count {
+    color: rgba(255,255,255,0.45);
   }
 }
